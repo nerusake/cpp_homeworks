@@ -1,0 +1,3 @@
+﻿  Curro_Battleship.cpp
+D:\School\CPP\Battleship\Curro_Battleship\Curro_Battleship.cpp(94,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Curro_Battleship.vcxproj -> D:\School\CPP\Battleship\Curro_Battleship\Debug\Curro_Battleship.exe
