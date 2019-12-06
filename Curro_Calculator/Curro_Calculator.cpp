@@ -4,6 +4,45 @@
 #include <iostream>
 #include <math.h>
 #include "calculator.h"
+#include <stack>
+
+template <typename T>
+class undoRedo
+{
+public:
+	undoRedo() = default;
+	void push(T a)
+	{
+		A.push(a);
+	}
+	T pop()
+	{
+		if (B.empty())
+		{
+			if (A.empty())
+			{
+				return (T)nullptr;
+			}
+			transfer();
+		}
+		T v = B.top();
+		B.pop();
+		return v;
+	}
+private:
+	std::stack<T> A;
+	std::stack<T> B;
+
+	void transfer()
+	{
+		while (!A.empty())
+		{
+			T v = A.top();
+			A.pop();
+			B.push(v);
+		}
+	}
+};
 
 int main()
 {
