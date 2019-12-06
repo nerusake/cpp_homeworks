@@ -1,4 +1,6 @@
-﻿  calculator.cpp
-  Curro_Calculator.cpp
+﻿  Curro_Calculator.cpp
+  calculator.cpp
+  undoRedo.cpp
   Generating Code...
+D:\CPP_Git\cpp_homeworks\Curro_Calculator\Curro_Calculator.cpp(23,13): warning C4101:  'c': unreferenced local variable
   Curro_Calculator.vcxproj -> D:\CPP_Git\cpp_homeworks\Curro_Calculator\Debug\Curro_Calculator.exe

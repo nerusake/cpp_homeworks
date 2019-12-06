@@ -1,4 +1,7 @@
 #include "calculator.h"
+#include "undoRedo.h"
+#include <stack>
+#include <iostream>
 
 double calculator::Calculate(double x, char oper, double y)
 {

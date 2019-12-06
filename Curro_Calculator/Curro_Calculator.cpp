@@ -4,45 +4,9 @@
 #include <iostream>
 #include <math.h>
 #include "calculator.h"
+#include "undoRedo.h"
 #include <stack>
 
-template <typename T>
-class undoRedo
-{
-public:
-	undoRedo() = default;
-	void push(T a)
-	{
-		A.push(a);
-	}
-	T pop()
-	{
-		if (B.empty())
-		{
-			if (A.empty())
-			{
-				return (T)nullptr;
-			}
-			transfer();
-		}
-		T v = B.top();
-		B.pop();
-		return v;
-	}
-private:
-	std::stack<T> A;
-	std::stack<T> B;
-
-	void transfer()
-	{
-		while (!A.empty())
-		{
-			T v = A.top();
-			A.pop();
-			B.push(v);
-		}
-	}
-};
 
 int main()
 {
@@ -51,13 +15,49 @@ int main()
 	double result = 0.0;
 	char oper = '+';
 
+	undoRedo* urfunc = new undoRedo();
+
     std::cout << "Welcome to Calculator!\n";
-	std::cout << "Please enter your desired calculation using the proper format: x+y | x-y | x*y | x/y\n";
+	std::cout << "Please enter your desired calculation using the proper format: x+y | x-y | x*y | x/y\nType u to undo and r to redo.";
 
 	calculator c;
 	while (true)
 	{
 		std::cin >> x >> oper >> y;
+
+		switch (oper)
+		{
+		case '+':
+			result = x + y;
+			std::cout << "Result: " << result << std::endl;
+			urfunc->pushUndo(result);
+			break;
+		case '-':
+			result = x - y;
+			std::cout << "Result: " << result << std::endl;
+			urfunc->pushUndo(result);
+			break;
+		case '*':
+			result = x * y;
+			std::cout << "Result: " << result << std::endl;
+			urfunc->pushUndo(result);
+			break;
+		case '/':
+			result = x / y;
+			std::cout << "Result: " << result << std::endl;
+			urfunc->pushUndo(result);
+			break;
+		case 'u':
+			urfunc->showUndo();
+			break;
+		case 'r':
+			urfunc->showRedo();
+			break;
+		default:
+			return 0;
+		}
+
+		/*std::cin >> x >> oper >> y;
 		if (oper == '/' && y == 0)
 		{
 			std::cout << "Division by 0 is impossible" << std::endl;
@@ -67,9 +67,9 @@ int main()
 		{
 			result = c.Calculate(x, oper, y);
 		}
-		std::cout << "Result: " << result << std::endl;
+		std::cout << "Result: " << result << std::endl;*/
 	}
-
+	delete(urfunc);
 	return 0;
 }
 

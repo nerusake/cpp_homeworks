@@ -153,9 +153,11 @@
   <ItemGroup>
     <ClCompile Include="calculator.cpp" />
     <ClCompile Include="Curro_Calculator.cpp" />
+    <ClCompile Include="undoRedo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calculator.h" />
+    <ClInclude Include="undoRedo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
